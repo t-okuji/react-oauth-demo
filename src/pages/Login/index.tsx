@@ -1,11 +1,22 @@
 import { Button } from "@/components/ui/button";
+
 function Login() {
+  const onGoogleAuthClick = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/auth/google_auth`,
+    );
+    if (!response.ok) {
+      throw new Error("API Error");
+    }
+    const authUrl = await response.text();
+    window.location.href = authUrl;
+  };
+
   return (
     <div className="flex h-screen justify-center px-2">
       <div className="p-4">
         <div className="flex flex-col items-center space-y-4">
           <p className="text-lg font-bold">OAuth demo</p>
-
           <Button className="h-[44px] w-[250px] text-[19px] bg-white text-black hover:bg-slate-50 rounded-full border-[1px] border-slate-800 flex justify-between">
             <div>
               <svg
@@ -26,7 +37,10 @@ function Login() {
             <div>Sign in with Apple</div>
             <div className="w-[17px]" />
           </Button>
-          <Button className="h-[44px] w-[250px] text-[19px] bg-white text-black hover:bg-slate-50 rounded-full border-[1px] border-slate-800 flex justify-between">
+          <Button
+            className="h-[44px] w-[250px] text-[19px] bg-white text-black hover:bg-slate-50 rounded-full border-[1px] border-slate-800 flex justify-between"
+            onClick={onGoogleAuthClick}
+          >
             <div>
               <svg
                 aria-label="sign in with apple"
