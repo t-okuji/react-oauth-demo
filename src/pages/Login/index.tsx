@@ -4,6 +4,9 @@ function Login() {
   const onGoogleAuthClick = async () => {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/auth/google_auth`,
+      {
+        credentials: "include",
+      },
     );
     if (!response.ok) {
       throw new Error("API Error");
