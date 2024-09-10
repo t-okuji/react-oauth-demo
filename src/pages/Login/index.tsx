@@ -4,13 +4,19 @@ function Login() {
   const onGoogleAuthClick = async () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/auth/google_auth`;
   };
+  const onAppleAuthClick = async () => {
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/apple_auth`;
+  };
 
   return (
     <div className="flex h-screen justify-center px-2">
       <div className="p-4">
         <div className="flex flex-col items-center space-y-4">
           <p className="text-lg font-bold">OAuth demo</p>
-          <Button className="h-[44px] w-[250px] text-[19px] bg-white text-black hover:bg-slate-50 rounded-full border-[1px] border-slate-800 flex justify-between">
+          <Button
+            className="h-[44px] w-[250px] text-[19px] bg-white text-black hover:bg-slate-50 rounded-full border-[1px] border-slate-800 flex justify-between"
+            onClick={onAppleAuthClick}
+          >
             <div>
               <svg
                 aria-label="sign in with apple"
