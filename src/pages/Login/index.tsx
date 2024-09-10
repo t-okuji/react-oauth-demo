@@ -2,14 +2,7 @@ import { Button } from "@/components/ui/button";
 
 function Login() {
   const onGoogleAuthClick = async () => {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/auth/google_auth`,
-    );
-    if (!response.ok) {
-      throw new Error("API Error");
-    }
-    const authUrl = await response.text();
-    window.location.href = authUrl;
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google_auth`;
   };
 
   return (
